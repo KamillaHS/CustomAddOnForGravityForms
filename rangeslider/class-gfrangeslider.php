@@ -83,7 +83,8 @@ class GFRangeSlider extends GFAddOn {
 			),
 
 		);
-
+		echo "<script>console.log($scripts);</script>";
+		
 		return array_merge( parent::scripts(), $scripts );
 	}
 
@@ -120,6 +121,11 @@ class GFRangeSlider extends GFAddOn {
 	public function tooltips( $tooltips ) {
 		$rangeslider_tooltips = array(
 			'input_class_setting' => sprintf( '<h6>%s</h6>%s', esc_html__( 'Input CSS Classes', 'rangeslider' ), esc_html__( 'The CSS Class names to be added to the field input.', 'rangeslider' ) ),
+			'number_range' => sprintf( '<h6>%s</h6>%s', esc_html__( 'Minimum', 'rangeslider' ), esc_html__( 'Enter the minimum and maximum values of the slider. If the minimum is set to 0, the default start value of "No size selected" will be shown. If set to 1, the default value will not get shown. If you do not know what you are doing, do not change this value. The maximum value should be the same number of step values you have entered.', 'rangeslider' ) ),
+			'slider_start' => sprintf( '<h6>%s</h6>%s', esc_html__( 'Start', 'rangeslider' ), esc_html__( 'Enter the start value of the slider. As default, this is set to 0, so that the default value gets shown. This value should be the same as the minimum value. Do not set this to any other value than the minimum value, if you do not know what you are doing.', 'rangeslider' ) ),
+			'slider_step' => sprintf( '<h6>%s</h6>%s', esc_html__( 'Step', 'rangeslider' ), esc_html__( 'Enter how far each step between minimum and max should be. As default, this is 1. If you do not know what you are doing, do not change this value.', 'rangeslider' ) ),
+			'slider_step_values' => sprintf( '<h6>%s</h6>%s', esc_html__( 'Slider Step Values', 'rangeslider' ), esc_html__( 'Enter a key and value for each step of the slider. The key is what the user is gonna see.  The value is what is gonna be used for the calculation.', 'rangeslider' ) ),
+			
 		);
 
 		return array_merge( $tooltips, $rangeslider_tooltips );
@@ -216,31 +222,36 @@ class GFRangeSlider extends GFAddOn {
     	// Create settings on position 1550 (right after range option)
     	if ( 1550 == $position ) {
     		?>
+			
     			<li class="slider_value_relations field_setting">
     				<div style="clear:both;">
-    					<?php _e( 'Value Relations', 'gsf-locale' ); ?>
+    					<?php  _e( 'Value Relations', 'gsf-locale' ); ?>
+						<?php gform_tooltip( 'number_range' ); ?>
     				</div>
     				<div style="width:50%;float:left"><input type="text" id="slider_min_value_relation" style="width:100%;" onchange="SetFieldProperty('slider_min_value_relation', this.value);" /><label for="slider_min_value_relation"><?php _e( 'Min', 'gsf-locale' ); ?></label></div>
     				<div style="width:50%;float:left"><input type="text" id="slider_max_value_relation" style="width:100%;" onchange="SetFieldProperty('slider_max_value_relation', this.value);" /><label for="slider_max_value_relation"><?php _e( 'Max', 'gsf-locale' ); ?></label></div>
     				<br class="clear">
     			</li>
+				
     			<li class="slider_step field_setting">
     				<div style="clear:both;">
     					<?php _e( 'Step', 'gsf-locale' ); ?>
+						<?php gform_tooltip( 'slider_step' ); ?>
     				</div>
     				<div style="width:25%;"><input type="number" id="slider_step" step=".01" style="width:100%;" onchange="SetFieldProperty('slider_step', this.value);" /></div>
     			</li>
 				<li class="slider_start field_setting">
     				<div style="clear:both;">
     					<?php _e( 'Start', 'gsf-locale' ); ?>
+						<?php gform_tooltip( 'slider_start' ); ?>
     				</div>
     				<div style="width:25%;"><input type="number" id="slider_start" value="0" style="width:100%;" onchange="SetFieldProperty('slider_start', this.value);" /></div>
     			</li>
 
 				<li class="slider_step_values field_setting">
     				<div style="clear:both;">
-    					<?php _e( 'Steps / Pool Størrelser', 'gsf-locale' ); ?>
-    					<?php gform_tooltip( 'slider_steps' ); ?>
+    					<?php _e( 'Step Values / Pool Størrelser', 'gsf-locale' ); ?>
+    					<?php gform_tooltip( 'slider_step_values' ); ?>
     				</div>
 					<div style="width:100%; display: flex; margin-bottom: 5px;">
 						<label style="width: 10%; font-size: 15px;">0</label>

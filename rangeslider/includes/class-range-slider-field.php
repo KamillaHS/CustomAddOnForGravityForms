@@ -116,7 +116,7 @@ class Range_Slider_Field extends GF_Field {
 		$size         = $this->size;
 		$class_suffix = $is_entry_detail ? '_admin' : '';
 		//$class        = $size . $class_suffix . ' ' . $inputClass;
-		$class        = $this->type . ' ' .$size . $class_suffix;
+		$class        = $this->type . ' ' .$field_id . $class_suffix;
 
 		// Prepare the other input attributes.
 		$tabindex              = $this->get_tabindex();
@@ -169,20 +169,20 @@ class Range_Slider_Field extends GF_Field {
 		$min_attr = "min='{$min}'";
 		$max_attr = "max='{$max}'";
 
-		$key1 = $this->slider_key1; $val1 = $this->slider_val1;
-		$key2 = $this->slider_key2; $val2 = $this->slider_val2;
-		$key3 = $this->slider_key3; $val3 = $this->slider_val3;
-		$key4 = $this->slider_key4; $val4 = $this->slider_val4;
-		$key5 = $this->slider_key5; $val5 = $this->slider_val5;
-		$key6 = $this->slider_key6; $val6 = $this->slider_val6;
-		$key7 = $this->slider_key7; $val7 = $this->slider_val7;
-		$key8 = $this->slider_key8; $val8 = $this->slider_val8;
-		$key9 = $this->slider_key9; $val9 = $this->slider_val9;
-		$key10 = $this->slider_key10; $val10 = $this->slider_val10;
+		$key1 = $this->slider_key1; $val1 = $this->slider_value1;
+		$key2 = $this->slider_key2; $val2 = $this->slider_value2;
+		$key3 = $this->slider_key3; $val3 = $this->slider_value3;
+		$key4 = $this->slider_key4; $val4 = $this->slider_value4;
+		$key5 = $this->slider_key5; $val5 = $this->slider_value5;
+		$key6 = $this->slider_key6; $val6 = $this->slider_value6;
+		$key7 = $this->slider_key7; $val7 = $this->slider_value7;
+		$key8 = $this->slider_key8; $val8 = $this->slider_value8;
+		$key9 = $this->slider_key9; $val9 = $this->slider_value9;
+		$key10 = $this->slider_key10; $val10 = $this->slider_value10;
 
-		echo("2." . $key1 . ", ");
-		echo("2" . $val1 . ", ");
-		echo("2.5" . $this->slider_val1);
+		//echo("2." . $key1 . ", ");
+		//echo("2" . $val1 . ", ");
+		//echo("2.5" . $this->slider_val1);
 
 
 		if ( '' == $value ) {
@@ -213,24 +213,25 @@ class Range_Slider_Field extends GF_Field {
 			$currency = '';
 		}
 
-		return sprintf( "<div class='ginput_container'>" . 
+		return sprintf( "<div class='ginput_container ginput_container_range_slider'>" . 
 							"<input name='input_%d' id='%s' type='range' {$step_attr} {$start_attr} {$min_attr} {$max_attr} {$data_value_visibility} ${connects_attr} value='%s' class='%s' data-min-relation='%s' data-max-relation='%s' data-value-format='%s' {$currency} {$tabindex} {$read_only} {$placeholder_attribute} %s/>" .
 							"<div id='gsfslider_%d' class='slider-display'></div>%s" .
-							"<div class='results'></div>" .
-							"<div id='range_maxValue'>{$max}</div><div id='range_field_id'>{$field_id}</div>" .
-							"<div id='range_key1'>{$key1}</div><div id='range_val1'>{$val1}</div>" .
-							"<div id='range_key2'>{$key2}</div><div id='range_val2'>{$val2}</div>" .
-							"<div id='range_key3'>{$key3}</div><div id='range_val3'>{$val3}</div>" .
-							"<div id='range_key4'>{$key4}</div><div id='range_val4'>{$val4}</div>" .
-							"<div id='range_key5'>{$key5}</div><div id='range_val5'>{$val5}</div>" .
-							"<div id='range_key6'>{$key6}</div><div id='range_val6'>{$val6}</div>" .
-							"<div id='range_key7'>{$key7}</div><div id='range_val7'>{$val7}</div>" .
-							"<div id='range_key8'>{$key8}</div><div id='range_val8'>{$val8}</div>" .
-							"<div id='range_key9'>{$key9}</div><div id='range_val9'>{$val9}</div>" .
-							"<div id='range_key10'>{$key10}</div><div id='range_val10'>{$val10}</div>" .
-							"<span id='text'>Ingen størrelse valgt</span>" .
+							"<div class='results_{$field_id}'></div>" .
+							"<div id='range_maxValue_{$field_id}'>{$max}</div><div id='range_field_id'>{$field_id}</div>" .
+							"<div id='range_key1_{$field_id}'>{$key1}</div><div id='range_val1_{$field_id}'>{$val1}</div>" .
+							"<div id='range_key2_{$field_id}'>{$key2}</div><div id='range_val2_{$field_id}'>{$val2}</div>" .
+							"<div id='range_key3_{$field_id}'>{$key3}</div><div id='range_val3_{$field_id}'>{$val3}</div>" .
+							"<div id='range_key4_{$field_id}'>{$key4}</div><div id='range_val4_{$field_id}'>{$val4}</div>" .
+							"<div id='range_key5_{$field_id}'>{$key5}</div><div id='range_val5_{$field_id}'>{$val5}</div>" .
+							"<div id='range_key6_{$field_id}'>{$key6}</div><div id='range_val6_{$field_id}'>{$val6}</div>" .
+							"<div id='range_key7_{$field_id}'>{$key7}</div><div id='range_val7_{$field_id}'>{$val7}</div>" .
+							"<div id='range_key8_{$field_id}'>{$key8}</div><div id='range_val8_{$field_id}'>{$val8}</div>" .
+							"<div id='range_key9_{$field_id}'>{$key9}</div><div id='range_val9_{$field_id}'>{$val9}</div>" .
+							"<div id='range_key10_{$field_id}'>{$key10}</div><div id='range_val10_{$field_id}'>{$val10}</div>" .
+							"<span id='text_{$field_id}'>Ingen størrelse valgt</span>" .
 						"</div>", 
-						$id, $field_id, 
+						$id, 
+						$field_id, 
 						esc_attr( $value ), 
 						esc_attr( $class ),
 						esc_attr( $this->slider_min_value_relation ), 
@@ -301,7 +302,8 @@ class Range_Slider_Field extends GF_Field {
 		  } else if ( $this->numberFormat == 'decimal_dot' ) {
 			  $value = GFCommon::clean_number( $value, 'decimal_dot' );
 		  }
-  
+		  
+  		 
 		  return $value;
 	  }
   
