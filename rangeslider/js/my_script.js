@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
 		let maxValue = document.getElementById('range_maxValue_' + rangeslider_id).innerHTML;
 		
 		$('.results_' + rangeslider_id).html('max = ' + maxValue + ", id = " + rangeslider_id);
-
+		
 		getElements(rangeslider_id);
 		setInputValues();
 		checkMaxValue(maxValue);
@@ -79,7 +79,7 @@ jQuery(document).ready(function($){
 		input_10 = {key: "", value: 0};
 		*/
 		
-		console.log(input_1);
+		//console.log(input_1);
 	}
 
 	// check maxValue and put input values in literal objects based on the maxValue
@@ -120,18 +120,23 @@ jQuery(document).ready(function($){
     	console.log(isMobile);
     	if (isMobile) {
         	inp.addEventListener("touchmove", function () { 
-            	document.getElementById('text_' + rangeslider_id).innerHTML = values2D[index][this.value].key  + " - " + values2D[index][this.value].value; 
+				document.getElementById('text_' + rangeslider_id).innerHTML = values2D[index][this.value].key  + " - " + values2D[index][this.value].value; 
+				
         	});
     	} else {
         	inp.addEventListener("mousemove", function () { 
-            	document.getElementById('text_' + rangeslider_id).innerHTML = values2D[index][this.value].key + " - " + values2D[index][this.value].value; 
+				document.getElementById('text_' + rangeslider_id).innerHTML = values2D[index][this.value].key + " - " + values2D[index][this.value].value; 
+
         	});
-    	}
+		}
+		
     
     	$('#'+rangeslider_id).change(function() {
         	output = [values[this.value].key, values[this.value].value];
         	console.log(output);
-    	});
+		});
+
+		
 	}
 
 

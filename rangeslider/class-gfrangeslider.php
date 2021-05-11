@@ -312,8 +312,8 @@ class GFRangeSlider extends GFAddOn {
     			
     		<?php
     	}
-    } // end slider_settings
-
+	} // end slider_settings
+	
 	/**
      * Add merge tags to calculation drop down
      *

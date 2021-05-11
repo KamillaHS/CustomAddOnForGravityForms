@@ -213,6 +213,7 @@ class Range_Slider_Field extends GF_Field {
 			$currency = '';
 		}
 
+
 		return sprintf( "<div class='ginput_container ginput_container_range_slider'>" . 
 							"<input name='input_%d' id='%s' type='range' {$step_attr} {$start_attr} {$min_attr} {$max_attr} {$data_value_visibility} ${connects_attr} value='%s' class='%s' data-min-relation='%s' data-max-relation='%s' data-value-format='%s' {$currency} {$tabindex} {$read_only} {$placeholder_attribute} %s/>" .
 							"<div id='gsfslider_%d' class='slider-display'></div>%s" .
